@@ -25,7 +25,7 @@ public class PointNode
 	 */
 	public PointNode(double x, double y)
 	{
-		// TODO
+		this(ANONYMOUS, x, y);
 	}
 
 	/**
@@ -36,7 +36,9 @@ public class PointNode
 	 */
 	public PointNode(String name, double x, double y)
 	{
-		// TODO
+		_x= x;
+		_y= y;
+		_name= name;
 	}
 
 	@Override
@@ -48,7 +50,20 @@ public class PointNode
 	@Override
 	public boolean equals(Object obj)
 	{
-		// TODO
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof PointNode)) {
+			return false;
+		}
+		
+		PointNode that = (PointNode)obj;
+		
+		//check if objects are equal
+		if(this._name == that._name) {
+			return false;
+		}
+		return true;
 	}
 
     @Override
