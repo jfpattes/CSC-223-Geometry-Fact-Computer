@@ -60,15 +60,23 @@ public class PointNode
 		PointNode that = (PointNode)obj;
 		
 		//check if objects are equal
-		if(this._name == that._name) {
+		MathUtilities.removeLessEpsilon(that._x);
+		MathUtilities.removeLessEpsilon(this._x);
+		MathUtilities.removeLessEpsilon(that._y);
+		MathUtilities.removeLessEpsilon(this._y);
+	
+		if(!MathUtilities.doubleEquals(that._x, this._x)) {
+			return false;
+		}
+		if(!MathUtilities.doubleEquals(that._y, this._y)) {
 			return false;
 		}
 		return true;
 	}
 
-    @Override
-    public String toString()
-    {
-		// TODO
-	}
+//    @Override
+//    public String toString()
+//    {
+//		// TODO
+//	}
 }
