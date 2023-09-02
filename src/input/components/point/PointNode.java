@@ -59,12 +59,13 @@ public class PointNode
 		
 		PointNode that = (PointNode)obj;
 		
-		//check if objects are equal
+		//should I just put these in the constructor?
 		MathUtilities.removeLessEpsilon(that._x);
 		MathUtilities.removeLessEpsilon(this._x);
 		MathUtilities.removeLessEpsilon(that._y);
 		MathUtilities.removeLessEpsilon(this._y);
-	
+		
+		//check if objects' x and y values are not equal
 		if(!MathUtilities.doubleEquals(that._x, this._x)) {
 			return false;
 		}
@@ -74,9 +75,9 @@ public class PointNode
 		return true;
 	}
 
-//    @Override
-//    public String toString()
-//    {
-//		// TODO
-//	}
+    @Override
+    public String toString()
+    {
+		return _name  + "(" + String.valueOf(_x) + "," + String.valueOf(_y) + ")";
+	}
 }
