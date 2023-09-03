@@ -61,12 +61,15 @@ class PointNodeTest {
 		//tests that if the difference in values is less than .000001 then it doesn't get counted
 		PointNode node8= new PointNode( 0, 5.0000009);
 		PointNode node9= new PointNode( 0, 5);
+		PointNode node10= new PointNode( Math.sqrt(2), 5);
+		PointNode node11= new PointNode( 1.414213, 5);
 		assertFalse (node1.equals(node2));
 		assertTrue (node1.equals(node1));
 		assertTrue (node1.equals(node3));
 		assertFalse (node4.equals(node5));
 		assertFalse (node6.equals(node7));
 		assertTrue (node8.equals(node9));
+		assertTrue (node10.equals(node11));
 
 	}
 }
