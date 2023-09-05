@@ -2,6 +2,7 @@ package input.components.point;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.lang.Throwable;
 
 public class PointNodeDatabase {
 	
@@ -19,13 +20,27 @@ public class PointNodeDatabase {
 	}
 	public boolean contains(PointNode node) {
 		return _points.contains(node);
-		
 	}
 	public boolean contains(int x, int y) {
-		PointNode node = new PointNode(x, y);
-		for (PointNode nodes: _points) {
-			if 
-		}
+		return this.contains(new PointNode(x, y));
 	}
-
+	
+	public PointNode getPoint(PointNode node) {
+		for (PointNode p: _points) {
+			if(p.getName().equals(node)) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public PointNode getPoint(double x, double y) {
+		for(PointNode p: _points) {
+			if(p.getX() == x && p.getY() == y) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
 }
