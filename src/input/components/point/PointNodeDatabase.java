@@ -23,14 +23,14 @@ public class PointNodeDatabase {
 		return _points.contains(node);
 	}
 	
-	public boolean contains(int x, int y) {
+	public boolean contains(double x, double y) {
 		return this.contains(new PointNode(x, y));
 	}
 	
 	public String getName(PointNode node) {
 		
 		for (PointNode p: _points) {
-			if(p.getName().equals(node)) {
+			if(p.equals(node)) {
 				return p.getName();
 			}
 		}
@@ -50,7 +50,7 @@ public class PointNodeDatabase {
 	public PointNode getPoint(PointNode node) {
 		
 		for (PointNode p: _points) {
-			if(p.getName().equals(node)) {
+			if(p.equals(node)) {
 				return p;
 			}
 		}
