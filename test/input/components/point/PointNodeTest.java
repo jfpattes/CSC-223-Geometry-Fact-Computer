@@ -11,12 +11,6 @@ import org.junit.jupiter.api.Test;
 
 class PointNodeTest {
 	
-
-	@Test
-	void testHashCode() {
-		fail("Not yet implemented");
-	}
-
 	@Test
 	void testGetX() {
 		PointNode node1= new PointNode( 0, 0);
