@@ -77,8 +77,8 @@ class PointNodeDatabaseTest {
 		points.put(node3);
 		
 		//Confirm no name
-		assertEquals("__UNNAMED", points.getName(node1));
-		assertEquals("__UNNAMED", points.getName(Math.sqrt(2), 5));
+		assertEquals(PointNode.ANONYMOUS, points.getName(node1));
+		assertEquals(PointNode.ANONYMOUS, points.getName(Math.sqrt(2), 5));
 		
 		
 		assertEquals ("A", points.getName(node2));

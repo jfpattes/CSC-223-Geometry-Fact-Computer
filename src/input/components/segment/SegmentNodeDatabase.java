@@ -15,7 +15,7 @@ import input.components.point.PointNode;
  */
 public class SegmentNodeDatabase {
 	protected HashMap<PointNode, LinkedHashSet<PointNode>> _adjLists;
-		
+
 	public SegmentNodeDatabase() {
 		_adjLists= new HashMap<PointNode, LinkedHashSet<PointNode>>();
 	}
@@ -23,35 +23,31 @@ public class SegmentNodeDatabase {
 		_adjLists= new HashMap<PointNode, LinkedHashSet<PointNode>>(map);
 	}
 	/*
-	* Reports the number of undirected edges
-	*@return int of undirected edges
-	*/
+	 * Reports the number of undirected edges
+	 *@return int of undirected edges
+	 */
 	public int numUndirectedEdges() {
-		if(_adjLists.isEmpty()){
-			return 0;
-		}
+		if(_adjLists.isEmpty())return 0;
+
 		int count=0;
 		Set<PointNode> setKey = _adjLists.keySet();
-		//loops through the keyset of the map
 		for(PointNode pn1: setKey) {
-			//loops through the values of the key equal to pn1
-			for (PointNode pn2: (_adjLists.get(pn1))){
-				//gets the values associated with the key pn2, and see if they contains pn1
-				if ((_adjLists.get(pn2)).contains(pn1)) {
+			for (PointNode pn2: _adjLists.get(pn1)){
+				if (_adjLists.get(pn2).contains(pn1)) {
 					count++;
 				}
 			}
 		}
-		return (count/2);
-		
+		return count/2;
+
 	}
 	/*
-	* Creates a one way connection between pointnodes
-	*@param PointNode
-	*@param Pointnode
-	*/
+	 * Creates a one way connection between pointnodes
+	 *@param PointNode
+	 *@param Pointnode
+	 */
 	public void addDirectedEdge(PointNode pn1, PointNode pn2) {
-//		if (pn1.equals(pn2)) {return;}
+		//		if (pn1.equals(pn2)) {return;}
 		//checks if the key value pn1 exist, if not it creates it and adds pn2 to it's values
 		if (!_adjLists.containsKey(pn1)) {
 			LinkedHashSet<PointNode> pnSet= new LinkedHashSet<PointNode>();
@@ -64,29 +60,29 @@ public class SegmentNodeDatabase {
 		}
 	}
 	/*
-	* Creates a two way connection between pointnodes
-	*@param PointNode
-	*@param Pointnode
-	*/
+	 * Creates a two way connection between pointnodes
+	 *@param PointNode
+	 *@param Pointnode
+	 */
 	public void addUndirectedEdge(PointNode pn1, PointNode pn2) {
 		addDirectedEdge(pn1, pn2);	
 		addDirectedEdge(pn2, pn1);	
 	}
 	/*
-	* Adds a list of pointnodes to the value set connected to a pointnode key
-	*@param PointNode
-	*@param list<PointNode>
-	*/
+	 * Adds a list of pointnodes to the value set connected to a pointnode key
+	 *@param PointNode
+	 *@param list<PointNode>
+	 */
 	public void addAdjencyList(PointNode pn, List<PointNode> valueList) {
 		for (PointNode value: valueList) {
 			addDirectedEdge(pn, value);
 		}
-		
+
 	}
 	/*
-	* Creates a list of the every connection between pointnodes
-	*@return List<SegmentNode>
-	*/
+	 * Creates a list of the every connection between pointnodes
+	 *@return List<SegmentNode>
+	 */
 	public List<SegmentNode> asSegmentList() {
 		List<SegmentNode> segList = new ArrayList<SegmentNode>();
 		if(_adjLists.isEmpty()){
@@ -98,14 +94,14 @@ public class SegmentNodeDatabase {
 			for (PointNode pn2: (_adjLists.get(pn1))){
 				SegmentNode sn=new SegmentNode(pn1, pn2);
 				segList.add(sn);
-				}
 			}
-		return segList;
 		}
+		return segList;
+	}
 	/*
-	* Creates a list of every connection between pointNodes without repitition.
-	*@return List<SegmentNode>
-	*/
+	 * Creates a list of every connection between pointNodes without repitition.
+	 *@return List<SegmentNode>
+	 */
 	public List<SegmentNode> asUnigueSegmentList(){
 		List<SegmentNode> segList = new ArrayList<>();
 		if(_adjLists.isEmpty()){
@@ -124,5 +120,5 @@ public class SegmentNodeDatabase {
 		}
 		return segList;
 	}
-	
+
 }

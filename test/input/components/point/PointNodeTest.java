@@ -1,12 +1,14 @@
 package input.components.point;
 
 import static org.junit.Assert.assertEquals;
-
+import utilities.math.MathUtilities;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import utilities.math.MathUtilities;
 /*
 * Tests the methods from the pointNode class.
 *@author Moultrie DangerField and Jack Patterson
@@ -23,14 +25,14 @@ class PointNodeTest {
 		PointNode node4=new PointNode(Math.sqrt(2), -5);
 		
 		//Test actual x values
-		assertTrue (node1.getX()==0);
-		assertTrue (node2.getX()==45);
-		assertTrue (node3.getX()==-45);
-		assertTrue (node4.getX()==Math.sqrt(2));
+		assertTrue (MathUtilities.doubleEquals(node1.getX(), 0));
+		assertTrue (MathUtilities.doubleEquals(node2.getX(), 45));
+		assertTrue (MathUtilities.doubleEquals(node3.getX(),-45));
+		assertTrue (MathUtilities.doubleEquals(node4.getX(), Math.sqrt(2)));
 		
 		//Test non existent x values
-		assertFalse(node3.getX()== 25);
-		assertFalse(node1.getX()== 4);
+		assertFalse(MathUtilities.doubleEquals(node3.getX(), 25));
+		assertFalse(MathUtilities.doubleEquals(node1.getX(),4));
 	}
 
 	@Test
@@ -41,14 +43,14 @@ class PointNodeTest {
 		PointNode node4=new PointNode(7, Math.sqrt(2));
 		
 		//test y values
-		assertTrue (node1.getY()==0);
-		assertTrue (node2.getY()==-45);
-		assertTrue (node3.getY()==45);
-		assertTrue (node4.getY()==Math.sqrt(2));
+		assertTrue ( MathUtilities.doubleEquals(node1.getY(), 0));
+		assertTrue ( MathUtilities.doubleEquals(node2.getY(),-45));
+		assertTrue (MathUtilities.doubleEquals(node3.getY(), 45));
+		assertTrue ( MathUtilities.doubleEquals(node4.getY(), Math.sqrt(2)));
 		
 		//Test non y values
-		assertFalse (node1.getY() == 45);
-		assertFalse (node3.getY() == 100);
+		assertFalse (MathUtilities.doubleEquals(node1.getY(), 45));
+		assertFalse (MathUtilities.doubleEquals(node3.getY(), 100));
 	}
 
 	@Test
@@ -60,12 +62,12 @@ class PointNodeTest {
 		//Test real names
 		assertEquals ("__UNNAMED", node1.getName());
 		assertEquals ("node2", node2.getName());
-		assertTrue (node2.getName()=="node2");
+		assertTrue (node2.getName().equals("node2"));
 		
 		//Test false names
-		assertFalse (node1.getName()=="");
-		assertFalse (node2.getName()=="node15");
-		assertFalse (node3.getName()=="node2");
+		assertFalse (node1.getName().equals(""));
+		assertFalse (node2.getName().equals("node15"));
+		assertFalse (node3.getName().equals("node2"));
 	}
 
 	@Test
