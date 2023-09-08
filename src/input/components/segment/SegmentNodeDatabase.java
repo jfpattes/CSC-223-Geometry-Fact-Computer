@@ -54,12 +54,12 @@ public class SegmentNodeDatabase {
 //		if (pn1.equals(pn2)) {return;}
 		//checks if the key value pn1 exist, if not it creates it and adds pn2 to it's values
 		if (!_adjLists.containsKey(pn1)) {
-			LinkedHashSet<PointNode> _pnSet1= new LinkedHashSet<PointNode>();
-			_adjLists.put(pn1, _pnSet1);
+			LinkedHashSet<PointNode> pnSet= new LinkedHashSet<PointNode>();
+			_adjLists.put(pn1, pnSet);
 		}
-		LinkedHashSet<PointNode> _pnSet1=_adjLists.get(pn1);
+		LinkedHashSet<PointNode> pnSet=_adjLists.get(pn1);
 		//adds pn2 to the key, if key exists and doesn't contain the pn2
-		if(!_pnSet1.contains(pn2)) {
+		if(!pnSet.contains(pn2)) {
 			_adjLists.get(pn1).add(pn2);
 		}
 	}

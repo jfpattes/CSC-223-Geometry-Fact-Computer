@@ -10,6 +10,12 @@ import org.junit.jupiter.api.Test;
 import input.components.point.PointNode;
 import input.components.point.PointNodeDatabase;
 
+/*
+* Tests the methods from the SegmentNodeDatabase class.
+*@author Moultrie DangerField and Jack Patterson
+*@version 9/8/23
+*/
+
 class SegmentNodeDatabaseTest
 {
     public SegmentNodeDatabase build()
@@ -52,6 +58,11 @@ class SegmentNodeDatabaseTest
 		SegmentNodeDatabase db = build();
 		
 		assertEquals (10, db.numUndirectedEdges());	
+		
+		PointNode node1=new PointNode("node1", -58, Math.sqrt(2));
+		PointNode node2=new PointNode("node2", 5, 37);
+		db.addUndirectedEdge(node1, node2);
+		assertEquals (11, db.numUndirectedEdges());
 	}
 	
     @Test

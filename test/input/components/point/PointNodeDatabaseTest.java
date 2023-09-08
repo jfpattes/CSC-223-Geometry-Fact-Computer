@@ -3,11 +3,17 @@ package input.components.point;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/*
+* Tests the methods from the PointNodeDatabase class.
+*@author Moultrie DangerField and Jack Patterson
+*@version 9/8/23
+*/
 class PointNodeDatabaseTest {
 
 	@Test
 	void testPut() {
+		//tests if irrational numbers, named, and unnamed pointnodes can be added. 
+		//It also proves we cannot add a pointnode with the same points
 		PointNodeDatabase points = new PointNodeDatabase();
 		PointNode node1= new PointNode( Math.sqrt(2), 5);
 		PointNode node2= new PointNode("A", 2, 5);
@@ -40,6 +46,7 @@ class PointNodeDatabaseTest {
 	
 	@Test
 	void testContains() {
+		//test that both versions of contains works on rational and irrational numbers
 		PointNodeDatabase _points = new PointNodeDatabase();
 		PointNode node1= new PointNode( Math.sqrt(2), 5);
 		PointNode node2= new PointNode( 2, 5);
@@ -59,9 +66,10 @@ class PointNodeDatabaseTest {
 	
 	@Test
 	void testGetName() {
+		//tests that both getName methods work for unnamed and named nodes.
 		PointNodeDatabase points = new PointNodeDatabase();
 		PointNode node1= new PointNode( Math.sqrt(2), 5);
-		PointNode node2= new PointNode("A", 1, 5);
+		PointNode node2= new PointNode("A", 1, -5);
 		PointNode node3= new PointNode("B", 2, 7);
 		
 		points.put(node1);
@@ -74,12 +82,13 @@ class PointNodeDatabaseTest {
 		
 		
 		assertEquals ("A", points.getName(node2));
-		assertEquals("A", points.getName(1, 5));
+		assertEquals("A", points.getName(1, -5));
 		assertFalse(points.getName(node3)== "b");
 		assertTrue(points.getName(node3)== "B");
 	}
 	@Test
 	void testGetPoint() {
+		//tests that both getPoint methods work on points with ration and irrational values
 		PointNodeDatabase points = new PointNodeDatabase();
 		PointNode node1= new PointNode(Math.sqrt(2), 5);
 		PointNode node2= new PointNode("A", 1, 5);
