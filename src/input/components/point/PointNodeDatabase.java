@@ -16,7 +16,11 @@ public class PointNodeDatabase {
 	}
 	
 	public void put(PointNode node) {
+		
 		_points.add(node);
+		
+		
+		
 	}
 	
 	public boolean contains(PointNode node) {

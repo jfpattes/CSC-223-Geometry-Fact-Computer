@@ -10,15 +10,29 @@ class PointNodeDatabaseTest {
 	void testPut() {
 		PointNodeDatabase _points = new PointNodeDatabase();
 		PointNode node1= new PointNode( Math.sqrt(2), 5);
-		PointNode node2= new PointNode( 2, 5);
+		PointNode node2= new PointNode("A", 2, 5);
 		PointNode node3= new PointNode("A", 2, 5);
+		PointNode node4 = new PointNode("B", 2, 5);
+		//How?
+		
 		_points.put(node1);
 		_points.put(node2);
 		_points.put(node3);
+		_points.put(node4);
+		
 		assertTrue (_points.contains(node1));
+		
 	    // Tests that putting two nodes with the same value but different names into the database works 
 		assertTrue (_points.contains(node2));
 		assertTrue (_points.contains(node3));
+		assertTrue(_points.contains(node4));
+		
+		assertEquals(node4.getName(), node3.getName());
+		
+		//assertEquals("__UNNAMED", _points.getName(node1));
+		
+		//assertTrue (_points.getPoint(node3).equals(node4));
+		
 	}
 	
 	@Test
@@ -26,6 +40,7 @@ class PointNodeDatabaseTest {
 		PointNodeDatabase _points = new PointNodeDatabase();
 		PointNode node1= new PointNode( Math.sqrt(2), 5);
 		PointNode node2= new PointNode( 2, 5);
+		
 		_points.put(node1);
 		//makes sure the contains method isn't just returning true
 		assertFalse (_points.contains(node2));
@@ -46,10 +61,12 @@ class PointNodeDatabaseTest {
 		PointNode node2= new PointNode("A", 1, 5);
 		PointNode node3= new PointNode("B", 1, 5);
 		PointNode node4= new PointNode("A", 1, 5);
+		
 		_points.put(node1);
 		_points.put(node2);
 		_points.put(node3);
 		_points.put(node4);
+		
 		assertEquals("__UNNAMED", _points.getName(node1));
 		assertEquals("__UNNAMED", _points.getName(Math.sqrt(2), 5));
 		assertEquals ("A", _points.getName(node2));
