@@ -4,6 +4,8 @@ import utilities.math.MathUtilities;
 
 /**
  * A 2D Point (x, y).
+ * @author Moultrie Dangerfield and Jack Patterson
+ * @version 09/07/2023
  */
 public class PointNode
 {
@@ -46,7 +48,11 @@ public class PointNode
 	{
 		return Double.valueOf(_x).hashCode() + Double.valueOf(_y).hashCode();
 	}
-
+	/**
+	 * Checks if the x and y coordinate are equal based on if they are in the same epsilon..
+	 * @param x The X coordinate
+	 * @param y The Y coordinate
+	 */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -59,7 +65,6 @@ public class PointNode
 		
 		PointNode that = (PointNode)obj;
 		
-		//should I just put these in the constructor?
 		MathUtilities.removeLessEpsilon(that._x);
 		MathUtilities.removeLessEpsilon(this._x);
 		MathUtilities.removeLessEpsilon(that._y);

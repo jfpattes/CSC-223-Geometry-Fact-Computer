@@ -3,7 +3,9 @@ package input.components.segment;
 import input.components.point.PointNode;
 
 /**
- * A utility class only for representing ONE segment
+ * Describes a line between 2 points
+ * @author Moultrie Dangerfield and Jack Patterson
+ * @version 09/07/2023
  */
 public class SegmentNode
 {
@@ -18,7 +20,11 @@ public class SegmentNode
 		_point1 = pt1;
 		_point2 = pt2;
 	}
-
+	/*
+	* Says if a SegmentNode is made of the same points, then it is equal
+	*@param PointNode
+	*@return boolean
+	*/
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -39,6 +45,11 @@ public class SegmentNode
 			}
 		return false;	
 	}
+	/*
+	* lists the name, x, and y value of both points
+	*@param PointNode
+	*@return string
+	*/
 	@Override
     public String toString()
     {
