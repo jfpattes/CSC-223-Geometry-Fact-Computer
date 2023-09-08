@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import input.components.point.PointNode;
 
@@ -22,9 +23,9 @@ public class SegmentNodeDatabase {
 			return 0;
 		}
 		int count=0;
-		LinkedHashSet<PointNode> _keySet=(LinkedHashSet<PointNode>) _adjLists.keySet();
+		Set<PointNode> setKey = _adjLists.keySet();
 		//loops through the keyset of the map
-		for(PointNode pn1: _keySet) {
+		for(PointNode pn1: setKey) {
 			//loops through the values of the key equal to pn1
 			for (PointNode pn2: (_adjLists.get(pn1))){
 				//gets the values associated with the key pn2, and see if they contains pn1
@@ -52,4 +53,12 @@ public class SegmentNodeDatabase {
 		addDirectedEdge(pn1, pn2);	
 		addDirectedEdge(pn2, pn1);	
 	}
+	public void addAdjencyList() {
+		
+	}
+	public void asSegmentList() {
+		
+	}
+	public 
+	
 }

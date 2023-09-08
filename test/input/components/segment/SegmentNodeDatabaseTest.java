@@ -54,8 +54,18 @@ class SegmentNodeDatabaseTest
     	PointNode e = new PointNode("E", 6, 0);
     	PointNode x = new PointNode("X", 3, 3);
 		SegmentNodeDatabase db = build();
+		db.addUndirectedEdge(a, b);
+		db.addUndirectedEdge(a, c);
+		db.addUndirectedEdge(b, c);
+		db.addUndirectedEdge(x, b);
+		db.addUndirectedEdge(d, b);
+		db.addUndirectedEdge(x, c);
+		db.addUndirectedEdge(e, c);
+		db.addUndirectedEdge(d, e);
+		db.addUndirectedEdge(d, x);
+		db.addUndirectedEdge(x, e);
+		assertEquals (10, db.numUndirectedEdges());
 		
-		assertEquals(10, db.numUndirectedEdges());
 	}
     @Test
     void testAddDirectedEdge() {
@@ -64,7 +74,19 @@ class SegmentNodeDatabaseTest
     	SegmentNodeDatabase snd1= new SegmentNodeDatabase();
     	snd1.addDirectedEdge(node1, node2);
     	assertTrue (snd1._adjLists.containsKey(node1));
-    	assertTrue (snd1._adjLists.containsValue(node2));
+    	assertTrue (snd1._adjLists.get(node1).contains(node2));
+    	
+    }
+    @Test
+    void testAddUndirectedEdges() {
+    	PointNode node1=new PointNode(4, 5);
+    	PointNode node2=new PointNode(2, 7);
+    	SegmentNodeDatabase snd1= new SegmentNodeDatabase();
+    	snd1.addUndirectedEdge(node1, node2);
+    	assertTrue (snd1._adjLists.containsKey(node1));
+    	assertTrue (snd1._adjLists.get(node1).contains(node2));
+    	assertTrue (snd1._adjLists.containsKey(node2));
+    	assertTrue (snd1._adjLists.get(node2).contains(node1));
     	
     }
 }
